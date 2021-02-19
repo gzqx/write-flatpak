@@ -1,0 +1,26 @@
+app-id: com.styluslabs.Write
+runtime: org.freedesktop.Platform
+runtime-version: "20.08"
+sdk: org.freedesktop.Sdk
+command: /app/bin/Write
+finish-args:
+  - --socket=x11
+  - --device=dri
+  - --filesystem=home
+modules:
+  - name: Write
+    buildsystem: simple
+    build-commands:
+      - install -D Write /app/bin/Write
+      - install -D Intro.svg /app/bin/Intro.svg
+      - install -D Roboto-Regular.ttf /app/bin/Roboto-Regular.ttf
+      - install -D DroidSansFallback.ttf /app/bin/DroidSansFallback.ttf
+      - install -D Write144x144.png /app/share/icons/hicolor/144x144/apps/com.styluslabs.Write.png
+      - install -D Write.desktop /app/share/applications/com.styluslabs.Write.desktop
+    sources:
+      - type: archive
+        url: http://www.styluslabs.com/download/write-tgz
+        archive-type: tar-gzip
+        sha512: b5b078b946f4fe3a3302f81b14c46f0665d751461feb936da6bcb0642320ed7ab0c8436021f99c481cdf6d849468d40df1bf43668ad349ce903b8fca771d7e85
+      - type: file
+        path: Write.desktop
