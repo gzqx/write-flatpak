@@ -1,12 +1,13 @@
 app-id: com.styluslabs.Write
 runtime: org.freedesktop.Platform
-runtime-version: "20.08"
+runtime-version: "23.08"
 sdk: org.freedesktop.Sdk
 command: /app/bin/Write
 finish-args:
   - --socket=x11
   - --device=dri
-  - --filesystem=home
+  - --filesystem=xdg-pictures
+
 modules:
   - name: Write
     buildsystem: simple
@@ -21,6 +22,14 @@ modules:
       - type: archive
         url: http://www.styluslabs.com/download/write-tgz
         archive-type: tar-gzip
-        sha512: b5b078b946f4fe3a3302f81b14c46f0665d751461feb936da6bcb0642320ed7ab0c8436021f99c481cdf6d849468d40df1bf43668ad349ce903b8fca771d7e85
+        sha256: 362053af38f145fa5a8542b7c81c14ae5b68889318649326fb77d68193504e0a
       - type: file
         path: Write.desktop
+
+# Optional build-options if needed
+build-options:
+  append-path: /app/bin
+  env:
+    CFLAGS: "-O2"
+    CXXFLAGS: "-O2"
+
